@@ -16,7 +16,7 @@ export const app = new Frog({
   // hub: neynar({ apiKey: 'NEYNAR_FROG_FM' })
 })
 
-app.frame('/', (c) => {
+app.frame('/:arg', (c) => {
   const { buttonValue, inputText, status } = c
   const fruit = inputText || buttonValue
   return c.res({
@@ -50,6 +50,7 @@ app.frame('/', (c) => {
             whiteSpace: 'pre-wrap',
           }}
         >
+          {c.req.param('arg')}
           {status === 'response'
             ? `Nice choice.${fruit ? ` ${fruit.toUpperCase()}!!` : ''}`
             : 'Welcome!'}
