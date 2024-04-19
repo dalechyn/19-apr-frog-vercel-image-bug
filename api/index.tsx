@@ -17,8 +17,7 @@ export const app = new Frog({
 })
 
 app.frame('/:arg', (c) => {
-  const { buttonValue, inputText, status } = c
-  const fruit = inputText || buttonValue
+  const {  status } = c
   return c.res({
     image: (
       <div
@@ -51,9 +50,6 @@ app.frame('/:arg', (c) => {
           }}
         >
           {c.req.param('arg')}
-          {status === 'response'
-            ? `Nice choice.${fruit ? ` ${fruit.toUpperCase()}!!` : ''}`
-            : 'Welcome!'}
         </div>
       </div>
     ),
